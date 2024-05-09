@@ -1,4 +1,4 @@
-#include <stdio.h>
+﻿#include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
 
@@ -64,7 +64,7 @@ int gamestart()
         char key = _getch();
         if (key == 'a')
         {
-            storyOne();
+            name();
             return 0;
         }
     }
