@@ -236,6 +236,8 @@ int quizThree()
         else
         {
             life--;
+            consoleClear();
+            inputClear();
             text(1, 41);
             printf("아무래도 틀린 듯 하다...");
             text(1, 42);
@@ -348,11 +350,13 @@ int quizThree()
     {
         inputClear();
         consoleClear();
+        text(1, 39);
+        printf("현재 %d번 문제 | HP : %d", correct, life);
         text(1, 41);
         printf("낮에는 모두에게 자신의 존재를 알리다가, 밤이 되면 흔적 없이 숨어버리는 것은?");
         text(1, 49);
         scanf("%s", &answer);
-        if (strncmp("태양", answer, 4) == 0 || strncmp("해", answer, 2))
+        if (strncmp("태양", answer, 4) == 0 || strncmp("해", answer, 2) == 0)
         {
             correct++;
             life = 3;
@@ -375,7 +379,11 @@ int quizThree()
         else
         {
             life--;
+            inputClear();
+            consoleClear();
+            text(1, 41);
             printf("아무래도 틀린 듯 하다...");
+            text(1, 42);
             printf("생명력이 1 감소했다");
             text(1, 39);
             printf("현재 %d번 문제 | HP : %d", correct, life);
@@ -537,6 +545,34 @@ void storyFour()
                 break;
             }
         }
+    }
+}
+
+int miku()
+{
+    char key = _getch();
+    if (key = 'm')
+    {
+        char line[1024];
+        FILE* storyFile;
+
+        consoleLine();
+        storyFile = fopen("mikudayo.txt", "r");
+        if (storyFile == NULL)
+        {
+            printf("??");
+            return 0;
+        }
+        int lineNumber = 1;
+        while (fgets(line, 1024, storyFile) != NULL)
+        {
+            consoleClear();
+            text(1, lineNumber);
+            printf("%s", line);
+            lineNumber++;
+            text(1, 51);
+        }
+        return 0;
     }
 }
 
@@ -927,10 +963,15 @@ int main()
         consoleClear();
         inputClear();
         text(1, 1);
-        printf("Thanks For Playing");
+        printf("상명대학교 게임전공 2024년 1학기");
+        text(1, 2);
+        printf("C프로그래밍 기말과제");
+        text(1, 3);
+        printf("김성현, 김태연, 임초연, 김영찬");
         text(1, 51);
     }
-    else
+
+    miku();
 
     return 0;
 }
