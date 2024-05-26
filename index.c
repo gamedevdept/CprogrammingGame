@@ -6,14 +6,14 @@
 #include <string.h>
 
 int KEYINPUT() {
-    keybd_event(VK_HANGEUL, 0, 0, 0);//´©¸§
+    keybd_event(VK_HANGEUL, 0, 0, 0);//ëˆ„ë¦„
 
-    keybd_event(VK_HANGEUL, 0, KEYEVENTF_KEYUP, 0);// ´©¸§ ÇØÁ¦
+    keybd_event(VK_HANGEUL, 0, KEYEVENTF_KEYUP, 0);// ëˆ„ë¦„ í•´ì œ
 
     return 0;
 }
 
-void text(int x, int y) // ÅØ½ºÆ® À§Ä¡¸¦ Á¶Á¤ÇÏ´Â ÇÔ¼öÀÔ´Ï´Ù. ¹ö±× ¾øÀ¸´Ï ¼öÁ¤ÇÏÁö ¾Ê¾Æµµ µË´Ï´Ù.
+void text(int x, int y) // í…ìŠ¤íŠ¸ ìœ„ì¹˜ë¥¼ ì¡°ì •í•˜ëŠ” í•¨ìˆ˜ì…ë‹ˆë‹¤. ë²„ê·¸ ì—†ìœ¼ë‹ˆ ìˆ˜ì •í•˜ì§€ ì•Šì•„ë„ ë©ë‹ˆë‹¤.
 {
 	COORD Cur;
 
@@ -24,49 +24,49 @@ void text(int x, int y) // ÅØ½ºÆ® À§Ä¡¸¦ Á¶Á¤ÇÏ´Â ÇÔ¼öÀÔ´Ï´Ù. ¹ö±× ¾øÀ¸´Ï ¼öÁ¤ÇÏ
 
 int frame()
 {
-    system("title ÄûÁî °ÔÀÓ");
+    system("title í€´ì¦ˆ ê²Œì„");
     system("mode con: cols=200 lines=100");
     //window;
     text(0, 0);
-    printf("¦£");
+    printf("â”Œ");
 
     for (int i = 0; i < 99; i++)
     {
-        printf("¦¡");
+        printf("â”€");
     }
-    printf("¦¤");
+    printf("â”");
 
     for (int i = 1; i < 50; i++)
     {
         text(0, i);
-        printf("¦¢");
+        printf("â”‚");
         text(100, i);
-        printf("¦¢");
+        printf("â”‚");
     }
     text(0, 48);
-    printf("¦§");
+    printf("â”œ");
     for (int i = 0; i < 99; i++)
     {
-        printf("¦¡");
+        printf("â”€");
 
     }
-    printf("¦©");
+    printf("â”¤");
     text(0, 50);
-    printf("¦¦");
+    printf("â””");
     for (int i = 0; i < 99; i++)
     {
-        printf("¦¡");
+        printf("â”€");
     }
-    printf("¦¥");
+    printf("â”˜");
     return 0;
 }
 
 int title()
 {
-    text(35, 10);
-    printf("¾ÆÁ÷Àº ÀÌ¸§ ¾ø´Â ÄûÁî°ÔÀÓ");
+    text(40, 10);
+    printf("íŒŒë¼ì˜¤ì˜ ë¶„ë…¸");
     text(27, 20);
-    printf("Ã¢À» ÀûÀıÈ÷ Á¶Àı ÈÄ ½ºÆäÀÌ½º ¹Ù¸¦ ´©¸£¼¼¿ä");
+    printf("ì°½ì„ ì ì ˆíˆ ì¡°ì ˆ í›„ ìŠ¤í˜ì´ìŠ¤ ë°”ë¥¼ ëˆ„ë¥´ì„¸ìš”");
     text(2, 49);
     printf("Game Development Dept.");
     text(1, 49);
@@ -77,13 +77,13 @@ int title()
 void consoleLine()
 {
     text(0, 40);
-    printf("¦§");
+    printf("â”œ");
     for (int i = 0; i < 99; i++)
     {
-        printf("¦¡");
+        printf("â”€");
 
     }
-    printf("¦©");
+    printf("â”¤");
 
 }
 
@@ -127,16 +127,16 @@ int quizOne()
     char answer[100];
     consoleClear();
     text(1, 41);
-    printf("½ºÇÎÅ©½º¸¦ Ã£¾Ò´Ù.\n");
+    printf("ìŠ¤í•‘í¬ìŠ¤ë¥¼ ì°¾ì•˜ë‹¤.\n");
     text(1, 42);
-    printf("½ºÇÎÅ©½º°¡ ³ª¿¡°Ô ¸»À» °Ç³Ù´Ù.\n");
+    printf("ìŠ¤í•‘í¬ìŠ¤ê°€ ë‚˜ì—ê²Œ ë§ì„ ê±´ë„¨ë‹¤.\n");
     text(1, 43);
-    printf("¾ÆÄ§¿¡´Â ³× ¹ß·Î, Á¡½É¿¡´Â µÎ ¹ß·Î, Àú³á¿¡´Â ¼¼ ¹ß·Î °È´Â °ÍÀº?");
+    printf("ì•„ì¹¨ì—ëŠ” ë„¤ ë°œë¡œ, ì ì‹¬ì—ëŠ” ë‘ ë°œë¡œ, ì €ë…ì—ëŠ” ì„¸ ë°œë¡œ ê±·ëŠ” ê²ƒì€?");
     text(1, 49);
     scanf("%s", &answer);
     KEYINPUT();
 
-    if (strncmp("»ç¶÷", answer, 4) == 0 || strncmp("ÀÎ°£", answer, 4) == 0)
+    if (strncmp("ì‚¬ëŒ", answer, 4) == 0 || strncmp("ì¸ê°„", answer, 4) == 0)
     {
         return 1;
     }
@@ -153,18 +153,18 @@ int quizTwo()
     char answer[100];
     consoleClear();
     text(1, 41);
-    printf("½ºÇÎÅ©½º¸¦ Ã£¾Ò´Ù. Á¶±İ Ä¿ÁöÁö ¾Ê¾Ò³ª?");
+    printf("ìŠ¤í•‘í¬ìŠ¤ë¥¼ ì°¾ì•˜ë‹¤. ì¡°ê¸ˆ ì»¤ì§€ì§€ ì•Šì•˜ë‚˜?");
     text(1, 42);
-    printf("½ºÇÎÅ©½º°¡ ³ª¿¡°Ô ¸»À» °Ç³Ù´Ù.");
+    printf("ìŠ¤í•‘í¬ìŠ¤ê°€ ë‚˜ì—ê²Œ ë§ì„ ê±´ë„¨ë‹¤.");
     text(1, 43);
-    printf("»ì¾ÆÀÖÁö¸¸ °ø±â¸¦ ³»»ÕÁö ¾Ê´Â´Ù. »ì¾ÆÀÖ¾îµµ Á×Àº µíÀÌ Â÷°©´Ù.");
+    printf("ì‚´ì•„ìˆì§€ë§Œ ê³µê¸°ë¥¼ ë‚´ë¿œì§€ ì•ŠëŠ”ë‹¤. ì‚´ì•„ìˆì–´ë„ ì£½ì€ ë“¯ì´ ì°¨ê°‘ë‹¤.");
     text(1, 44);
-    printf("Àı´ë ¸ñ¸¶¸£Áö ¾ÊÁö¸¸ Ç×»ó ¸¶½Å´Ù. ÀÌ°ÍÀº ¹«¾ùÀÎ°¡?");
+    printf("ì ˆëŒ€ ëª©ë§ˆë¥´ì§€ ì•Šì§€ë§Œ í•­ìƒ ë§ˆì‹ ë‹¤. ì´ê²ƒì€ ë¬´ì—‡ì¸ê°€?");
     text(1, 49);
     scanf("%s", &answer);
     KEYINPUT();
 
-    if (strncmp("¹°°í±â", answer, 6) == 0 || strncmp("»ı¼±", answer, 4) == 0)
+    if (strncmp("ë¬¼ê³ ê¸°", answer, 6) == 0 || strncmp("ìƒì„ ", answer, 4) == 0)
     {
         return 1;
     }
@@ -181,11 +181,11 @@ int quizThree()
     inputClear();
     consoleClear();
     text(1, 41);
-    printf("°Å´ëÇÑ ½ºÇÎÅ©½º°¡ ¹®Á¦¸¦ ³½´Ù.");
+    printf("ê±°ëŒ€í•œ ìŠ¤í•‘í¬ìŠ¤ê°€ ë¬¸ì œë¥¼ ë‚¸ë‹¤.");
     text(1, 42);
-    printf("¸ğµç ¹®Á¦¸¦ ¸ÂÃß¾î ½ºÇÎÅ©½º¸¦ ÀÌ±âÀÚ.");
+    printf("ëª¨ë“  ë¬¸ì œë¥¼ ë§ì¶”ì–´ ìŠ¤í•‘í¬ìŠ¤ë¥¼ ì´ê¸°ì.");
     text(1, 49);
-    printf("½ºÆäÀÌ½º ¹Ù¸¦ ´­·¯ ÄûÁî ½ÃÀÛ");
+    printf("ìŠ¤í˜ì´ìŠ¤ ë°”ë¥¼ ëˆŒëŸ¬ í€´ì¦ˆ ì‹œì‘");
     while (1)
     {
         char key = _getch();
@@ -200,28 +200,28 @@ int quizThree()
     inputClear();
     consoleClear();
     text(1, 39);
-    printf("ÇöÀç 1¹ø ¹®Á¦ | HP : 3");
+    printf("í˜„ì¬ 1ë²ˆ ë¬¸ì œ | HP : 3");
 
     while (1)
     {
         text(1, 41);
-        printf("°Å´ëÇÏÁö¸¸ Àı´ë ¼ºÀåÇÏÁö ¾Ê°í, »Ñ¸®°¡ ÀÖÁö¸¸ µå·¯³ªÁö ¾ÊÀ¸¸ç,");
+        printf("ê±°ëŒ€í•˜ì§€ë§Œ ì ˆëŒ€ ì„±ì¥í•˜ì§€ ì•Šê³ , ë¿Œë¦¬ê°€ ìˆì§€ë§Œ ë“œëŸ¬ë‚˜ì§€ ì•Šìœ¼ë©°,");
         text(1, 42);
-        printf("³ª¹«º¸´Ù Å« °ÍÀº?");
+        printf("ë‚˜ë¬´ë³´ë‹¤ í° ê²ƒì€?");
         text(1, 49);
         scanf("%s", &answer);
-        if (strncmp("»ê", answer, 2) == 0)
+        if (strncmp("ì‚°", answer, 2) == 0)
         {
             correct++;
             life = 3;
             inputClear();
             consoleClear();
             text(1, 41);
-            printf("Á¤´äÀ» ¸ÂÃß°í ¸»¾Ò´Ù.");
+            printf("ì •ë‹µì„ ë§ì¶”ê³  ë§ì•˜ë‹¤.");
             text(1, 42);
-            printf("½ºÇÎÅ©½º´Â ¸Ó¸®ºÎÅÍ ³ì¾Æ³»¸°´Ù.");
+            printf("ìŠ¤í•‘í¬ìŠ¤ëŠ” ë¨¸ë¦¬ë¶€í„° ë…¹ì•„ë‚´ë¦°ë‹¤.");
             text(1, 49);
-            printf("½ºÆäÀÌ½º ¹Ù¸¦ ´­·¯ °è¼Ó ÁøÇà");
+            printf("ìŠ¤í˜ì´ìŠ¤ ë°”ë¥¼ ëˆŒëŸ¬ ê³„ì† ì§„í–‰");
             while (1)
             {
                 char key = _getch();
@@ -239,11 +239,11 @@ int quizThree()
             consoleClear();
             inputClear();
             text(1, 41);
-            printf("¾Æ¹«·¡µµ Æ²¸° µí ÇÏ´Ù...");
+            printf("ì•„ë¬´ë˜ë„ í‹€ë¦° ë“¯ í•˜ë‹¤...");
             text(1, 42);
-            printf("»ı¸í·ÂÀÌ 1 °¨¼ÒÇß´Ù.");
+            printf("ìƒëª…ë ¥ì´ 1 ê°ì†Œí–ˆë‹¤.");
             text(1, 39);
-            printf("ÇöÀç 1¹ø ¹®Á¦ | HP : %d", life);
+            printf("í˜„ì¬ 1ë²ˆ ë¬¸ì œ | HP : %d", life);
             while (1)
             {
                 char key = _getch();
@@ -259,11 +259,11 @@ int quizThree()
             inputClear();
             consoleClear();
             text(1, 41);
-            printf("½ºÇÎÅ©½º : Æ²·È´Ù. ³Ê´Â ³ªÀÇ Á¦¹°ÀÌ µÉ °ÍÀÌ´Ù.");
+            printf("ìŠ¤í•‘í¬ìŠ¤ : í‹€ë ¸ë‹¤. ë„ˆëŠ” ë‚˜ì˜ ì œë¬¼ì´ ë  ê²ƒì´ë‹¤.");
             text(1, 42);
-            printf("±× ¸¹Àº ±âÈ¸¸¦ ÀüºÎ ¼ÒÁøÇÏ´Ù´Ï, ³ÊÀÇ ÃÖÈÄ·Î´Â µüÀÌ±º.");
+            printf("ê·¸ ë§ì€ ê¸°íšŒë¥¼ ì „ë¶€ ì†Œì§„í•˜ë‹¤ë‹ˆ, ë„ˆì˜ ìµœí›„ë¡œëŠ” ë”±ì´êµ°.");
             text(1, 43);
-            printf("´ç½ÅÀº ½ºÇÎÅ©½ºÀÇ Á¦¹°ÀÌ µÇ¾ú½À´Ï´Ù.");
+            printf("ë‹¹ì‹ ì€ ìŠ¤í•‘í¬ìŠ¤ì˜ ì œë¬¼ì´ ë˜ì—ˆìŠµë‹ˆë‹¤.");
             text(1, 1);
             printf("Game Over");
 
@@ -275,27 +275,27 @@ int quizThree()
         inputClear();
         consoleClear();
         text(1, 39);
-        printf("ÇöÀç 2¹ø ¹®Á¦ | HP : %d", life);
+        printf("í˜„ì¬ 2ë²ˆ ë¬¸ì œ | HP : %d", life);
         text(1, 41);
-        printf("º½¿¡´Â È­»çÇÏ°Ô Â÷·ÁÀÔ°í, ¿©¸§¿¡´Â ¿ÊÀ» ²¸ÀÔÀ¸¸ç,");
+        printf("ë´„ì—ëŠ” í™”ì‚¬í•˜ê²Œ ì°¨ë ¤ì…ê³ , ì—¬ë¦„ì—ëŠ” ì˜·ì„ ê»´ì…ìœ¼ë©°,");
         text(1, 42);
-        printf("Ãß¿öÁö±â ½ÃÀÛÇÏ¸é ¿ÊÀ» ¹ş¾î´øÁö°í, °Ü¿ïÀÌ µÇ¸é ¹ú°Å¼şÀÌ°¡ µÈ´Ù.");
+        printf("ì¶”ì›Œì§€ê¸° ì‹œì‘í•˜ë©´ ì˜·ì„ ë²—ì–´ë˜ì§€ê³ , ê²¨ìš¸ì´ ë˜ë©´ ë²Œê±°ìˆ­ì´ê°€ ëœë‹¤.");
         text(1, 43);
-        printf("ÀÌ°ÍÀº ¹«¾ùÀÎ°¡?");
+        printf("ì´ê²ƒì€ ë¬´ì—‡ì¸ê°€?");
         text(1, 49);
         scanf("%s", &answer);
-        if (strncmp("³ª¹«", answer, 4) == 0)
+        if (strncmp("ë‚˜ë¬´", answer, 4) == 0)
         {
             correct++;
             life = 3;
             inputClear();
             consoleClear();
             text(1, 41);
-            printf("Á¤´äÀ» ¸ÂÃß°í ¸»¾Ò´Ù.");
+            printf("ì •ë‹µì„ ë§ì¶”ê³  ë§ì•˜ë‹¤.");
             text(1, 42);
-            printf("½ºÇÎÅ©½ºÀÇ ¿ŞÂÊ ÆÈÀÌ ³ì¾Æ³»¸°´Ù.");
+            printf("ìŠ¤í•‘í¬ìŠ¤ì˜ ì™¼ìª½ íŒ”ì´ ë…¹ì•„ë‚´ë¦°ë‹¤.");
             text(1, 49);
-            printf("½ºÆäÀÌ½º ¹Ù¸¦ ´­·¯ °è¼Ó ÁøÇà");
+            printf("ìŠ¤í˜ì´ìŠ¤ ë°”ë¥¼ ëˆŒëŸ¬ ê³„ì† ì§„í–‰");
             while (1)
             {
                 char key = _getch();
@@ -313,11 +313,11 @@ int quizThree()
             consoleClear();
             life--;
             text(1, 41);
-            printf("¾Æ¹«·¡µµ Æ²¸° µí ÇÏ´Ù...");
+            printf("ì•„ë¬´ë˜ë„ í‹€ë¦° ë“¯ í•˜ë‹¤...");
             text(1, 42);
-            printf("»ı¸í·ÂÀÌ 1 °¨¼ÒÇß´Ù");
+            printf("ìƒëª…ë ¥ì´ 1 ê°ì†Œí–ˆë‹¤");
             text(1, 39);
-            printf("ÇöÀç 2¹ø ¹®Á¦ | HP : %d", life);
+            printf("í˜„ì¬ 2ë²ˆ ë¬¸ì œ | HP : %d", life);
             while (1)
             {
                 char key = _getch();
@@ -333,13 +333,13 @@ int quizThree()
             inputClear();
             consoleClear();
             text(1, 39);
-            printf("ÇöÀç %d¹ø ¹®Á¦ | HP : %d", correct, life);
+            printf("í˜„ì¬ %dë²ˆ ë¬¸ì œ | HP : %d", correct, life);
             text(1, 41);
-            printf("½ºÇÎÅ©½º : Æ²·È´Ù. ³Ê´Â ³ªÀÇ Á¦¹°ÀÌ µÉ °ÍÀÌ´Ù.");
+            printf("ìŠ¤í•‘í¬ìŠ¤ : í‹€ë ¸ë‹¤. ë„ˆëŠ” ë‚˜ì˜ ì œë¬¼ì´ ë  ê²ƒì´ë‹¤.");
             text(1, 42);
-            printf("±× ¸¹Àº ±âÈ¸¸¦ ÀüºÎ ¼ÒÁøÇÏ´Ù´Ï, ³ÊÀÇ ÃÖÈÄ·Î´Â µüÀÌ±º.");
+            printf("ê·¸ ë§ì€ ê¸°íšŒë¥¼ ì „ë¶€ ì†Œì§„í•˜ë‹¤ë‹ˆ, ë„ˆì˜ ìµœí›„ë¡œëŠ” ë”±ì´êµ°.");
             text(1, 43);
-            printf("´ç½ÅÀº ½ºÇÎÅ©½ºÀÇ Á¦¹°ÀÌ µÇ¾ú½À´Ï´Ù.");
+            printf("ë‹¹ì‹ ì€ ìŠ¤í•‘í¬ìŠ¤ì˜ ì œë¬¼ì´ ë˜ì—ˆìŠµë‹ˆë‹¤.");
             text(1, 1);
             printf("Game Over");
 
@@ -351,22 +351,22 @@ int quizThree()
         inputClear();
         consoleClear();
         text(1, 39);
-        printf("ÇöÀç %d¹ø ¹®Á¦ | HP : %d", correct, life);
+        printf("í˜„ì¬ %dë²ˆ ë¬¸ì œ | HP : %d", correct, life);
         text(1, 41);
-        printf("³·¿¡´Â ¸ğµÎ¿¡°Ô ÀÚ½ÅÀÇ Á¸Àç¸¦ ¾Ë¸®´Ù°¡, ¹ãÀÌ µÇ¸é ÈçÀû ¾øÀÌ ¼û¾î¹ö¸®´Â °ÍÀº?");
+        printf("ë‚®ì—ëŠ” ëª¨ë‘ì—ê²Œ ìì‹ ì˜ ì¡´ì¬ë¥¼ ì•Œë¦¬ë‹¤ê°€, ë°¤ì´ ë˜ë©´ í”ì  ì—†ì´ ìˆ¨ì–´ë²„ë¦¬ëŠ” ê²ƒì€?");
         text(1, 49);
         scanf("%s", &answer);
-        if (strncmp("ÅÂ¾ç", answer, 4) == 0 || strncmp("ÇØ", answer, 2) == 0)
+        if (strncmp("íƒœì–‘", answer, 4) == 0 || strncmp("í•´", answer, 2) == 0)
         {
             correct++;
             life = 3;
             consoleClear();
             text(1, 41);
-            printf("Á¤´äÀ» ¸ÂÃß°í ¸»¾Ò´Ù.");
+            printf("ì •ë‹µì„ ë§ì¶”ê³  ë§ì•˜ë‹¤.");
             text(1, 42);
-            printf("½ºÇÎÅ©½ºÀÇ ¿À¸¥ÂÊ ÆÈÀÌ ³ì¾Æ³»¸°´Ù.");
+            printf("ìŠ¤í•‘í¬ìŠ¤ì˜ ì˜¤ë¥¸ìª½ íŒ”ì´ ë…¹ì•„ë‚´ë¦°ë‹¤.");
             text(1, 49);
-            printf("½ºÆäÀÌ½º ¹Ù¸¦ ´­·¯ °è¼Ó ÁøÇà");
+            printf("ìŠ¤í˜ì´ìŠ¤ ë°”ë¥¼ ëˆŒëŸ¬ ê³„ì† ì§„í–‰");
             while (1)
             {
                 char key = _getch();
@@ -382,24 +382,24 @@ int quizThree()
             inputClear();
             consoleClear();
             text(1, 41);
-            printf("¾Æ¹«·¡µµ Æ²¸° µí ÇÏ´Ù...");
+            printf("ì•„ë¬´ë˜ë„ í‹€ë¦° ë“¯ í•˜ë‹¤...");
             text(1, 42);
-            printf("»ı¸í·ÂÀÌ 1 °¨¼ÒÇß´Ù");
+            printf("ìƒëª…ë ¥ì´ 1 ê°ì†Œí–ˆë‹¤");
             text(1, 39);
-            printf("ÇöÀç %d¹ø ¹®Á¦ | HP : %d", correct, life);
+            printf("í˜„ì¬ %dë²ˆ ë¬¸ì œ | HP : %d", correct, life);
         }
         if (life == 0)
         {
             inputClear();
             consoleClear();
             text(1, 39);
-            printf("ÇöÀç %d¹ø ¹®Á¦ | HP : %d", correct, life);
+            printf("í˜„ì¬ %dë²ˆ ë¬¸ì œ | HP : %d", correct, life);
             text(1, 41);
-            printf("½ºÇÎÅ©½º : Æ²·È´Ù. ³Ê´Â ³ªÀÇ Á¦¹°ÀÌ µÉ °ÍÀÌ´Ù.");
+            printf("ìŠ¤í•‘í¬ìŠ¤ : í‹€ë ¸ë‹¤. ë„ˆëŠ” ë‚˜ì˜ ì œë¬¼ì´ ë  ê²ƒì´ë‹¤.");
             text(1, 42);
-            printf("±× ¸¹Àº ±âÈ¸¸¦ ÀüºÎ ¼ÒÁøÇÏ´Ù´Ï, ³ÊÀÇ ÃÖÈÄ·Î´Â µüÀÌ±º.");
+            printf("ê·¸ ë§ì€ ê¸°íšŒë¥¼ ì „ë¶€ ì†Œì§„í•˜ë‹¤ë‹ˆ, ë„ˆì˜ ìµœí›„ë¡œëŠ” ë”±ì´êµ°.");
             text(1, 43);
-            printf("´ç½ÅÀº ½ºÇÎÅ©½ºÀÇ Á¦¹°ÀÌ µÇ¾ú½À´Ï´Ù.");
+            printf("ë‹¹ì‹ ì€ ìŠ¤í•‘í¬ìŠ¤ì˜ ì œë¬¼ì´ ë˜ì—ˆìŠµë‹ˆë‹¤.");
             text(1, 1);
             printf("Game Over");
 
@@ -417,7 +417,7 @@ void storyOne()
     storyFile = fopen("storyPrologue.txt", "r");
     if (storyFile == NULL)
     {
-        printf("½ºÅä¸® ÆÄÀÏÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù. ½ºÅä¸® ÆÄÀÏÀ» Ãß°¡ÇÏ¼¼¿ä.");
+        printf("ìŠ¤í† ë¦¬ íŒŒì¼ì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤. ìŠ¤í† ë¦¬ íŒŒì¼ì„ ì¶”ê°€í•˜ì„¸ìš”.");
         return -1;
     }
 
@@ -427,7 +427,7 @@ void storyOne()
         text(1, 41);
         printf("%s", line);
         text(1, 49);
-        printf("½ºÆäÀÌ½º ¹Ù¸¦ ´­·¯ ½ºÅä¸® ÁøÇà");
+        printf("ìŠ¤í˜ì´ìŠ¤ ë°”ë¥¼ ëˆŒëŸ¬ ìŠ¤í† ë¦¬ ì§„í–‰");
         while (1)
         {
             text(0, 51);
@@ -452,7 +452,7 @@ void storyTwo()
     storyFile = fopen("storyTwo.txt", "r");
     if (storyFile == NULL)
     {
-        printf("½ºÅä¸® ÆÄÀÏÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù. ½ºÅä¸® ÆÄÀÏÀ» Ãß°¡ÇÏ¼¼¿ä.");
+        printf("ìŠ¤í† ë¦¬ íŒŒì¼ì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤. ìŠ¤í† ë¦¬ íŒŒì¼ì„ ì¶”ê°€í•˜ì„¸ìš”.");
         return -1;
     }
 
@@ -462,7 +462,7 @@ void storyTwo()
         text(1, 41);
         printf("%s", line);
         text(1, 49);
-        printf("½ºÆäÀÌ½º ¹Ù¸¦ ´­·¯ ½ºÅä¸® ÁøÇà");
+        printf("ìŠ¤í˜ì´ìŠ¤ ë°”ë¥¼ ëˆŒëŸ¬ ìŠ¤í† ë¦¬ ì§„í–‰");
         while (1)
         {
             text(0, 51);
@@ -487,7 +487,7 @@ void storyThree()
     storyFile = fopen("storyThree.txt", "r");
     if (storyFile == NULL)
     {
-        printf("½ºÅä¸® ÆÄÀÏÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù. ½ºÅä¸® ÆÄÀÏÀ» Ãß°¡ÇÏ¼¼¿ä.");
+        printf("ìŠ¤í† ë¦¬ íŒŒì¼ì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤. ìŠ¤í† ë¦¬ íŒŒì¼ì„ ì¶”ê°€í•˜ì„¸ìš”.");
         return -1;
     }
 
@@ -497,7 +497,7 @@ void storyThree()
         text(1, 41);
         printf("%s", line);
         text(1, 49);
-        printf("½ºÆäÀÌ½º ¹Ù¸¦ ´­·¯ ½ºÅä¸® ÁøÇà");
+        printf("ìŠ¤í˜ì´ìŠ¤ ë°”ë¥¼ ëˆŒëŸ¬ ìŠ¤í† ë¦¬ ì§„í–‰");
         while (1)
         {
             text(0, 51);
@@ -522,7 +522,7 @@ void storyFour()
     storyFile = fopen("storyFour.txt", "r");
     if (storyFile == NULL)
     {
-        printf("½ºÅä¸® ÆÄÀÏÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù. ½ºÅä¸® ÆÄÀÏÀ» Ãß°¡ÇÏ¼¼¿ä.");
+        printf("ìŠ¤í† ë¦¬ íŒŒì¼ì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤. ìŠ¤í† ë¦¬ íŒŒì¼ì„ ì¶”ê°€í•˜ì„¸ìš”.");
         return -1;
     }
 
@@ -532,7 +532,7 @@ void storyFour()
         text(1, 41);
         printf("%s", line);
         text(1, 49);
-        printf("½ºÆäÀÌ½º ¹Ù¸¦ ´­·¯ ½ºÅä¸® ÁøÇà");
+        printf("ìŠ¤í˜ì´ìŠ¤ ë°”ë¥¼ ëˆŒëŸ¬ ìŠ¤í† ë¦¬ ì§„í–‰");
         while (1)
         {
             text(0, 51);
@@ -545,34 +545,6 @@ void storyFour()
                 break;
             }
         }
-    }
-}
-
-int miku()
-{
-    char key = _getch();
-    if (key = 'm')
-    {
-        char line[1024];
-        FILE* storyFile;
-
-        consoleLine();
-        storyFile = fopen("mikudayo.txt", "r");
-        if (storyFile == NULL)
-        {
-            printf("??");
-            return 0;
-        }
-        int lineNumber = 1;
-        while (fgets(line, 1024, storyFile) != NULL)
-        {
-            consoleClear();
-            text(1, lineNumber);
-            printf("%s", line);
-            lineNumber++;
-            text(1, 51);
-        }
-        return 0;
     }
 }
 
@@ -619,7 +591,7 @@ int main()
     };
     inputClear();
     text(1, 39);
-    printf("º® : \033[41m \033[0m ÇÃ·¹ÀÌ¾î : \033[44m \033[0m À¯¹° : \033[43m \033[0m Å»Ãâ±¸ : \033[42m \033[0m");
+    printf("ë²½ : \033[41m \033[0m í”Œë ˆì´ì–´ : \033[44m \033[0m ìœ ë¬¼ : \033[43m \033[0m íƒˆì¶œêµ¬ : \033[42m \033[0m");
     text(80, 5);
     for (int i = 0; i < 10; i++)
     {
@@ -732,16 +704,16 @@ int main()
                 consoleClear();
                 text(1, 41);
 
-                printf("À¯¹° '¸Å ¸ğ¾çÀÇ È£·ç½º' ¸¦ ¾ò¾ú´Ù!");
+                printf("ìœ ë¬¼ 'ë§¤ ëª¨ì–‘ì˜ í˜¸ë£¨ìŠ¤' ë¥¼ ì–»ì—ˆë‹¤!");
                 getFirstKey = 1;
             }
             else
             {
                 consoleClear();
                 text(1, 41);
-                printf("Æ²¸° ´äÀ» ¸»Çß´Ù. ½ºÇÎÅ©½º´Â È­°¡ ³µ´Ù.");
+                printf("í‹€ë¦° ë‹µì„ ë§í–ˆë‹¤. ìŠ¤í•‘í¬ìŠ¤ëŠ” í™”ê°€ ë‚¬ë‹¤.");
                 text(1, 42);
-                printf("ÀÏ´Ü ÈÄÅğÇß´Ù°¡ ´Ù½Ã ½ÃµµÇÏÀÚ.");
+                printf("ì¼ë‹¨ í›„í‡´í–ˆë‹¤ê°€ ë‹¤ì‹œ ì‹œë„í•˜ì.");
                 text(playerx + 80, playery + 5);
                 printf("\033[0m \033[0m");
 
@@ -764,7 +736,7 @@ int main()
         {
             consoleClear();
             text(1, 41);
-            printf("Àá±ä ¹®ÀÌ´Ù. ¹«¾ğ°¡ ¿­ µµ±¸°¡ ÀÖÀ» °ÍÀÌ´Ù.");
+            printf("ì ê¸´ ë¬¸ì´ë‹¤. ë¬´ì–¸ê°€ ì—´ ë„êµ¬ê°€ ìˆì„ ê²ƒì´ë‹¤.");
             text(playerx + 80, playery + 5);
             printf("\033[42m \033[0m");
 
@@ -801,7 +773,7 @@ int main()
     };
     inputClear();
     text(1, 39);
-    printf("º® : \033[41m \033[0m ÇÃ·¹ÀÌ¾î : \033[44m \033[0m À¯¹° : \033[43m \033[0m Å»Ãâ±¸ : \033[42m \033[0m");
+    printf("ë²½ : \033[41m \033[0m í”Œë ˆì´ì–´ : \033[44m \033[0m ìœ ë¬¼ : \033[43m \033[0m íƒˆì¶œêµ¬ : \033[42m \033[0m");
     text(70, 5);
     for (int i = 0; i < 20; i++)
     {
@@ -912,16 +884,16 @@ int main()
             {
                 consoleClear();
                 text(1, 41);
-                printf("À¯¹° '¿À½Ã¸®½ºÀÇ µ¿»ó'À» ¾ò¾ú´Ù!");
+                printf("ìœ ë¬¼ 'ì˜¤ì‹œë¦¬ìŠ¤ì˜ ë™ìƒ'ì„ ì–»ì—ˆë‹¤!");
                 getSecondKey = 1;
             }
             else
             {
                 consoleClear();
                 text(1, 41);
-                printf("Æ²¸° ´äÀ» ¸»Çß´Ù. ½ºÇÎÅ©½º´Â È­°¡ ³µ´Ù.");
+                printf("í‹€ë¦° ë‹µì„ ë§í–ˆë‹¤. ìŠ¤í•‘í¬ìŠ¤ëŠ” í™”ê°€ ë‚¬ë‹¤.");
                 text(1, 42);
-                printf("ÀÏ´Ü ÈÄÅğÇß´Ù°¡ ´Ù½Ã ½ÃµµÇÏÀÚ.");
+                printf("ì¼ë‹¨ í›„í‡´í–ˆë‹¤ê°€ ë‹¤ì‹œ ì‹œë„í•˜ì.");
                 text(playerx + 70, playery + 5);
                 printf("\033[0m \033[0m");
 
@@ -944,7 +916,7 @@ int main()
         {
             consoleClear();
             text(1, 41);
-            printf("Àá±ä ¹®ÀÌ´Ù. µ¿»óÀ» ¿Ã·Á³õ´Â ¼±¹İÀÌ ÀÖ´Ù.");
+            printf("ì ê¸´ ë¬¸ì´ë‹¤. ë™ìƒì„ ì˜¬ë ¤ë†“ëŠ” ì„ ë°˜ì´ ìˆë‹¤.");
             text(playerx + 70, playery + 5);
             printf("\033[42m \033[0m");
 
@@ -963,15 +935,13 @@ int main()
         consoleClear();
         inputClear();
         text(1, 1);
-        printf("»ó¸í´ëÇĞ±³ °ÔÀÓÀü°ø 2024³â 1ÇĞ±â");
+        printf("ìƒëª…ëŒ€í•™êµ ê²Œì„ì „ê³µ 2024ë…„ 1í•™ê¸°");
         text(1, 2);
-        printf("CÇÁ·Î±×·¡¹Ö ±â¸»°úÁ¦");
+        printf("Cí”„ë¡œê·¸ë˜ë° ê¸°ë§ê³¼ì œ");
         text(1, 3);
-        printf("±è¼ºÇö, ±èÅÂ¿¬, ÀÓÃÊ¿¬, ±è¿µÂù");
+        printf("ê¹€ì„±í˜„, ê¹€íƒœì—°, ì„ì´ˆì—°, ê¹€ì˜ì°¬");
         text(1, 51);
     }
-
-    miku();
 
     return 0;
 }
