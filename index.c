@@ -5,6 +5,14 @@
 #include <Windows.h>
 #include <string.h>
 
+int KEYINPUT() {
+    keybd_event(VK_HANGEUL, 0, 0, 0);//누름
+
+    keybd_event(VK_HANGEUL, 0, KEYEVENTF_KEYUP, 0);// 누름 해제
+
+    return 0;
+}
+
 void text(int x, int y) // 텍스트 위치를 조정하는 함수입니다. 버그 없으니 수정하지 않아도 됩니다.
 {
 	COORD Cur;
@@ -126,6 +134,7 @@ int quizOne()
     printf("아침에는 네 발로, 점심에는 두 발로, 저녁에는 세 발로 걷는 것은?");
     text(1, 49);
     scanf("%s", &answer);
+    KEYINPUT();
 
     if (strncmp("사람", answer, 4) == 0 || strncmp("인간", answer, 4) == 0)
     {
@@ -133,7 +142,261 @@ int quizOne()
     }
     else
     {
+        KEYINPUT();
+        inputClear();
         return 0;
+    }
+}
+
+int quizTwo()
+{
+    char answer[100];
+    consoleClear();
+    text(1, 41);
+    printf("스핑크스를 찾았다. 조금 커지지 않았나?");
+    text(1, 42);
+    printf("스핑크스가 나에게 말을 건넨다.");
+    text(1, 43);
+    printf("살아있지만 공기를 내뿜지 않는다. 살아있어도 죽은 듯이 차갑다.");
+    text(1, 44);
+    printf("절대 목마르지 않지만 항상 마신다. 이것은 무엇인가?");
+    text(1, 49);
+    scanf("%s", &answer);
+    KEYINPUT();
+
+    if (strncmp("물고기", answer, 6) == 0 || strncmp("생선", answer, 4) == 0)
+    {
+        return 1;
+    }
+    else
+    {
+        KEYINPUT();
+        inputClear();
+        return 0;
+    }
+}
+
+int quizThree()
+{
+    inputClear();
+    consoleClear();
+    text(1, 41);
+    printf("거대한 스핑크스가 문제를 낸다.");
+    text(1, 42);
+    printf("모든 문제를 맞추어 스핑크스를 이기자.");
+    text(1, 49);
+    printf("스페이스 바를 눌러 퀴즈 시작");
+    while (1)
+    {
+        char key = _getch();
+        if (key == ' ')
+        {
+            break;
+        }
+    }
+    char answer[100];
+    int correct = 1;
+    int life = 3;
+    inputClear();
+    consoleClear();
+    text(1, 39);
+    printf("현재 1번 문제 | HP : 3");
+
+    while (1)
+    {
+        text(1, 41);
+        printf("거대하지만 절대 성장하지 않고, 뿌리가 있지만 드러나지 않으며,");
+        text(1, 42);
+        printf("나무보다 큰 것은?");
+        text(1, 49);
+        scanf("%s", &answer);
+        if (strncmp("산", answer, 2) == 0)
+        {
+            correct++;
+            life = 3;
+            inputClear();
+            consoleClear();
+            text(1, 41);
+            printf("정답을 맞추고 말았다.");
+            text(1, 42);
+            printf("스핑크스는 머리부터 녹아내린다.");
+            text(1, 49);
+            printf("스페이스 바를 눌러 계속 진행");
+            while (1)
+            {
+                char key = _getch();
+                if (key == ' ')
+                {
+                    break;
+                }
+
+            }
+            break;
+        }
+        else
+        {
+            life--;
+            text(1, 41);
+            printf("아무래도 틀린 듯 하다...");
+            text(1, 42);
+            printf("생명력이 1 감소했다.");
+            text(1, 39);
+            printf("현재 1번 문제 | HP : %d", life);
+            while (1)
+            {
+                char key = _getch();
+                if (key == ' ')
+                {
+                    break;
+                }
+
+            }
+        }
+        if (life == 0)
+        {
+            inputClear();
+            consoleClear();
+            text(1, 41);
+            printf("스핑크스 : 틀렸다. 너는 나의 제물이 될 것이다.");
+            text(1, 42);
+            printf("그 많은 기회를 전부 소진하다니, 너의 최후로는 딱이군.");
+            text(1, 43);
+            printf("당신은 스핑크스의 제물이 되었습니다.");
+            text(1, 1);
+            printf("Game Over");
+
+            return 0;
+        }
+    }
+    while (1)
+    {
+        inputClear();
+        consoleClear();
+        text(1, 39);
+        printf("현재 2번 문제 | HP : %d", life);
+        text(1, 41);
+        printf("봄에는 화사하게 차려입고, 여름에는 옷을 껴입으며,");
+        text(1, 42);
+        printf("추워지기 시작하면 옷을 벗어던지고, 겨울이 되면 벌거숭이가 된다.");
+        text(1, 43);
+        printf("이것은 무엇인가?");
+        text(1, 49);
+        scanf("%s", &answer);
+        if (strncmp("나무", answer, 4) == 0)
+        {
+            correct++;
+            life = 3;
+            inputClear();
+            consoleClear();
+            text(1, 41);
+            printf("정답을 맞추고 말았다.");
+            text(1, 42);
+            printf("스핑크스의 왼쪽 팔이 녹아내린다.");
+            text(1, 49);
+            printf("스페이스 바를 눌러 계속 진행");
+            while (1)
+            {
+                char key = _getch();
+                if (key == ' ')
+                {
+                    break;
+                }
+
+            }
+            break;
+        }
+        else
+        {
+            inputClear();
+            consoleClear();
+            life--;
+            text(1, 41);
+            printf("아무래도 틀린 듯 하다...");
+            text(1, 42);
+            printf("생명력이 1 감소했다");
+            text(1, 39);
+            printf("현재 2번 문제 | HP : %d", life);
+            while (1)
+            {
+                char key = _getch();
+                if (key == ' ')
+                {
+                    break;
+                }
+
+            }
+        }
+        if (life == 0)
+        {
+            inputClear();
+            consoleClear();
+            text(1, 39);
+            printf("현재 %d번 문제 | HP : %d", correct, life);
+            text(1, 41);
+            printf("스핑크스 : 틀렸다. 너는 나의 제물이 될 것이다.");
+            text(1, 42);
+            printf("그 많은 기회를 전부 소진하다니, 너의 최후로는 딱이군.");
+            text(1, 43);
+            printf("당신은 스핑크스의 제물이 되었습니다.");
+            text(1, 1);
+            printf("Game Over");
+
+            return 0;
+        }
+    }
+    while (1)
+    {
+        inputClear();
+        consoleClear();
+        text(1, 41);
+        printf("낮에는 모두에게 자신의 존재를 알리다가, 밤이 되면 흔적 없이 숨어버리는 것은?");
+        text(1, 49);
+        scanf("%s", &answer);
+        if (strncmp("태양", answer, 4) == 0 || strncmp("해", answer, 2))
+        {
+            correct++;
+            life = 3;
+            consoleClear();
+            text(1, 41);
+            printf("정답을 맞추고 말았다.");
+            text(1, 42);
+            printf("스핑크스의 오른쪽 팔이 녹아내린다.");
+            text(1, 49);
+            printf("스페이스 바를 눌러 계속 진행");
+            while (1)
+            {
+                char key = _getch();
+                if (key == ' ')
+                {
+                    return 1;
+                }
+            }
+        }
+        else
+        {
+            life--;
+            printf("아무래도 틀린 듯 하다...");
+            printf("생명력이 1 감소했다");
+            text(1, 39);
+            printf("현재 %d번 문제 | HP : %d", correct, life);
+        }
+        if (life == 0)
+        {
+            inputClear();
+            consoleClear();
+            text(1, 39);
+            printf("현재 %d번 문제 | HP : %d", correct, life);
+            text(1, 41);
+            printf("스핑크스 : 틀렸다. 너는 나의 제물이 될 것이다.");
+            text(1, 42);
+            printf("그 많은 기회를 전부 소진하다니, 너의 최후로는 딱이군.");
+            text(1, 43);
+            printf("당신은 스핑크스의 제물이 되었습니다.");
+            text(1, 1);
+            printf("Game Over");
+
+            return 0;
+        }
     }
 }
 
@@ -171,6 +434,7 @@ void storyOne()
         }
     }
 }
+
 void storyTwo()
 {
     char line[1024];
@@ -206,15 +470,88 @@ void storyTwo()
     }
 }
 
+void storyThree()
+{
+    char line[1024];
+    FILE* storyFile;
+
+    consoleClear();
+    storyFile = fopen("storyThree.txt", "r");
+    if (storyFile == NULL)
+    {
+        printf("스토리 파일이 존재하지 않습니다. 스토리 파일을 추가하세요.");
+        return -1;
+    }
+
+    while (fgets(line, 1024, storyFile) != NULL)
+    {
+        consoleClear();
+        text(1, 41);
+        printf("%s", line);
+        text(1, 49);
+        printf("스페이스 바를 눌러 스토리 진행");
+        while (1)
+        {
+            text(0, 51);
+            char key = _getch();
+            if (key == ' ')
+            {
+                consoleClear();
+                text(1, 41);
+                printf("%s", line);
+                break;
+            }
+        }
+    }
+}
+
+void storyFour()
+{
+    char line[1024];
+    FILE* storyFile;
+
+    consoleClear();
+    storyFile = fopen("storyFour.txt", "r");
+    if (storyFile == NULL)
+    {
+        printf("스토리 파일이 존재하지 않습니다. 스토리 파일을 추가하세요.");
+        return -1;
+    }
+
+    while (fgets(line, 1024, storyFile) != NULL)
+    {
+        consoleClear();
+        text(1, 41);
+        printf("%s", line);
+        text(1, 49);
+        printf("스페이스 바를 눌러 스토리 진행");
+        while (1)
+        {
+            text(0, 51);
+            char key = _getch();
+            if (key == ' ')
+            {
+                consoleClear();
+                text(1, 41);
+                printf("%s", line);
+                break;
+            }
+        }
+    }
+}
+
 int main()
 {
     int getFirstKey = 0;
+    int getSecondKey = 0;
     int playerx = 1;
     int playery = 1;
     int keyx = 0;
     int keyy = 0;
     int doorX = 0;
     int doorY = 0;
+    int playerStartX = 0;
+    int playerStartY = 0;
 
     frame();
     title();
@@ -245,6 +582,8 @@ int main()
         {'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w'}
     };
     inputClear();
+    text(1, 39);
+    printf("벽 : \033[41m \033[0m 플레이어 : \033[44m \033[0m 유물 : \033[43m \033[0m 탈출구 : \033[42m \033[0m");
     text(80, 5);
     for (int i = 0; i < 10; i++)
     {
@@ -261,6 +600,8 @@ int main()
             else if (map[i][j] == 'p')
             {
                 printf("\033[44m \033[0m");
+                playerStartX = j;
+                playerStartY = i;
             }
             else if (map[i][j] == 'k')
             {
@@ -291,7 +632,7 @@ int main()
                     text(playerx + 80, playery + 5);
                     printf("\033[0m ");
                     playery--;
-                    map[playery][playerx] = 'w';
+                    map[playery][playerx] = 'p';
                     text(playerx + 80, playery + 5);
                     printf("\033[44m \033[0m");
                 }
@@ -307,7 +648,7 @@ int main()
                     text(playerx + 80, playery + 5);
                     printf("\033[0m ");
                     playerx--;
-                    map[playery][playerx] = 'w';
+                    map[playery][playerx] = 'p';
                     text(playerx + 80, playery + 5);
                     printf("\033[44m \033[0m");
                 }
@@ -323,7 +664,7 @@ int main()
                     text(playerx + 80, playery + 5);
                     printf("\033[0m ");
                     playery++;
-                    map[playery][playerx] = 'w';
+                    map[playery][playerx] = 'p';
                     text(playerx + 80, playery + 5);
                     printf("\033[44m \033[0m");
                 }
@@ -339,7 +680,7 @@ int main()
                     text(playerx + 80, playery + 5);
                     printf("\033[0m ");
                     playerx++;
-                    map[playery][playerx] = 'w';
+                    map[playery][playerx] = 'p';
                     text(playerx + 80, playery + 5);
                     printf("\033[44m \033[0m");
                 }
@@ -348,34 +689,58 @@ int main()
         if (keyx == playerx && keyy == playery && getFirstKey == 0)
         {
             int success = 0;
-            while (1)
-            {
-                success = quizOne();
+            success = quizOne();
 
-                if (success == 1)
-                {
-                    text(1, 44);
-                    printf("열쇠를 얻었다!");
-                    getFirstKey = 1;
-                    break;
-                }
-                else
-                {
-                    text(1, 44);
-                    printf("틀린 답을 말했다. 스핑크스는 화가 났다.");
-                    text(1, 45);
-                    printf("일단 후퇴했다가 다시 시도하자.");
-                }
+            if (success == 1)
+            {
+                consoleClear();
+                text(1, 41);
+
+                printf("유물 '매 모양의 호루스' 를 얻었다!");
+                getFirstKey = 1;
+            }
+            else
+            {
+                consoleClear();
+                text(1, 41);
+                printf("틀린 답을 말했다. 스핑크스는 화가 났다.");
+                text(1, 42);
+                printf("일단 후퇴했다가 다시 시도하자.");
+                text(playerx + 80, playery + 5);
+                printf("\033[0m \033[0m");
+
+                playerx = playerStartX;
+                playery = playerStartY;
+                text(playerx + 80, playery + 5);
+                printf("\033[0m \033[0m");
+
+                text(keyx + 80, keyy + 5);
+                printf("\033[43m \033[0m");
             }
         }
         if (doorX == playerx && doorY == playery && getFirstKey == 1)
         {
+            clearScreen();
             storyTwo();
             break;
         }
+        else if (doorX == playerx && doorY == playery && getFirstKey == 0)
+        {
+            consoleClear();
+            text(1, 41);
+            printf("잠긴 문이다. 무언가 열 도구가 있을 것이다.");
+            text(playerx + 80, playery + 5);
+            printf("\033[42m \033[0m");
+
+            playerx--;
+
+            text(playerx + 80, playery + 5);
+            printf("\033[0m \033[0m");
+
+        }
     }
     clearScreen();
-    char map[20][20] =
+    char mapTwo[20][20] =
     {
         {'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w'},
         {'w', 'p', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'w', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'w'},
@@ -399,30 +764,33 @@ int main()
         {'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w'}
     };
     inputClear();
+    text(1, 39);
+    printf("벽 : \033[41m \033[0m 플레이어 : \033[44m \033[0m 유물 : \033[43m \033[0m 탈출구 : \033[42m \033[0m");
     text(70, 5);
     for (int i = 0; i < 20; i++)
     {
         for (int j = 0; j < 20; j++)
         {
-            if (map[i][j] == 'w')
+            if (mapTwo[i][j] == 'w')
             {
                 printf("\033[41m \033[0m");
             }
-            else if (map[i][j] == ' ')
+            else if (mapTwo[i][j] == ' ')
             {
                 printf("\033[0m \033[0m");
             }
-            else if (map[i][j] == 'p')
+            else if (mapTwo[i][j] == 'p')
             {
-                printf("\033[44m \033[0m");
+                playerStartX = j;
+                playerStartY = i;
             }
-            else if (map[i][j] == 'k')
+            else if (mapTwo[i][j] == 'k')
             {
                 printf("\033[43m \033[0m");
                 keyy = i;
                 keyx = j;
             }
-            else if (map[i][j] == 'e')
+            else if (mapTwo[i][j] == 'e')
             {
                 printf("\033[42m \033[0m");
                 doorX = j;
@@ -439,14 +807,14 @@ int main()
         {
             if (playery >= 1)
             {
-                if (map[playery - 1][playerx] != 'w')
+                if (mapTwo[playery - 1][playerx] != 'w')
                 {
-                    map[playery][playerx] = " ";
-                    text(playerx + 80, playery + 5);
+                    mapTwo[playery][playerx] = " ";
+                    text(playerx + 70, playery + 5);
                     printf("\033[0m ");
                     playery--;
-                    map[playery][playerx] = 'w';
-                    text(playerx + 80, playery + 5);
+                    mapTwo[playery][playerx] = 'p';
+                    text(playerx + 70, playery + 5);
                     printf("\033[44m \033[0m");
                 }
             }
@@ -455,79 +823,114 @@ int main()
         {
             if (playery >= 1)
             {
-                if (map[playery][playerx - 1] != 'w')
+                if (mapTwo[playery][playerx - 1] != 'w')
                 {
-                    map[playery][playerx] = " ";
-                    text(playerx + 80, playery + 5);
+                    mapTwo[playery][playerx] = " ";
+                    text(playerx + 70, playery + 5);
                     printf("\033[0m ");
                     playerx--;
-                    map[playery][playerx] = 'w';
-                    text(playerx + 80, playery + 5);
+                    mapTwo[playery][playerx] = 'p';
+                    text(playerx + 70, playery + 5);
                     printf("\033[44m \033[0m");
                 }
             }
         }
         else if (key == 'S' || key == 's')
         {
-            if (playery < 9)
+            if (playery < 19)
             {
-                if (map[playery + 1][playerx] != 'w')
+                if (mapTwo[playery + 1][playerx] != 'w')
                 {
-                    map[playery][playerx] = " ";
-                    text(playerx + 80, playery + 5);
+                    mapTwo[playery][playerx] = " ";
+                    text(playerx + 70, playery + 5);
                     printf("\033[0m ");
                     playery++;
-                    map[playery][playerx] = 'w';
-                    text(playerx + 80, playery + 5);
+                    mapTwo[playery][playerx] = 'p';
+                    text(playerx + 70, playery + 5);
                     printf("\033[44m \033[0m");
                 }
             }
         }
         else if (key == 'd' || key == 'D')
         {
-            if (playerx < 9)
+            if (playerx < 19)
             {
-                if (map[playery][playerx + 1] != 'w')
+                if (mapTwo[playery][playerx + 1] != 'w')
                 {
-                    map[playery][playerx] = " ";
-                    text(playerx + 80, playery + 5);
+                    mapTwo[playery][playerx] = " ";
+                    text(playerx + 70, playery + 5);
                     printf("\033[0m ");
                     playerx++;
-                    map[playery][playerx] = 'w';
-                    text(playerx + 80, playery + 5);
+                    mapTwo[playery][playerx] = 'p';
+                    text(playerx + 70, playery + 5);
                     printf("\033[44m \033[0m");
                 }
             }
         }
-        if (keyx == playerx && keyy == playery && getFirstKey == 0)
+        if (keyx == playerx && keyy == playery && getSecondKey == 0)
         {
             int success = 0;
-            while (1)
-            {
-                success = quizOne();
+            success = quizTwo();
 
-                if (success == 1)
-                {
-                    text(1, 44);
-                    printf("열쇠를 얻었다!");
-                    getFirstKey = 1;
-                    break;
-                }
-                else
-                {
-                    text(1, 44);
-                    printf("틀린 답을 말했다. 스핑크스는 화가 났다.");
-                    text(1, 45);
-                    printf("일단 후퇴했다가 다시 시도하자.");
-                }
+            if (success == 1)
+            {
+                consoleClear();
+                text(1, 41);
+                printf("유물 '오시리스의 동상'을 얻었다!");
+                getSecondKey = 1;
+            }
+            else
+            {
+                consoleClear();
+                text(1, 41);
+                printf("틀린 답을 말했다. 스핑크스는 화가 났다.");
+                text(1, 42);
+                printf("일단 후퇴했다가 다시 시도하자.");
+                text(playerx + 70, playery + 5);
+                printf("\033[0m \033[0m");
+
+                playerx = playerStartX;
+                playery = playerStartY;
+                text(playerx + 70, playery + 5);
+                printf("\033[0m \033[0m");
+
+                text(keyx + 70, keyy + 5);
+                printf("\033[43m \033[0m");
             }
         }
-        if (doorX == playerx && doorY == playery && getFirstKey == 1)
+        if (doorX == playerx && doorY == playery && getSecondKey == 1)
         {
-            storyTwo();
+            clearScreen();
+            storyThree();
             break;
         }
+        else if (doorX == playerx && doorY == playery && getSecondKey == 0)
+        {
+            consoleClear();
+            text(1, 41);
+            printf("잠긴 문이다. 동상을 올려놓는 선반이 있다.");
+            text(playerx + 70, playery + 5);
+            printf("\033[42m \033[0m");
+
+            playerx--;
+
+            text(playerx + 70, playery + 5);
+            printf("\033[0m \033[0m");
+        }
     }
+    int success = 0;
+    success = quizThree();
+    if (success == 1)
+    {
+        storyFour();
+        text(1, 41);
+        consoleClear();
+        inputClear();
+        text(1, 1);
+        printf("Thanks For Playing");
+        text(1, 51);
+    }
+    else
 
     return 0;
 }
